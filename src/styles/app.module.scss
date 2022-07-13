@@ -1,0 +1,14 @@
+@import './colors/colors.scss';
+@import './fonts/fonts.scss';
+
+.container{
+    background-color:$background-app;
+    padding: 10px;
+}
+
+.headings{
+    font-family: "mathlete" !important;
+    font-weight: normal;
+    color: red;
+    font-style: normal;
+}
