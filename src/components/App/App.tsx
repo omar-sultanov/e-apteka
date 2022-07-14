@@ -5,6 +5,8 @@ import AppNav from "../AppNav/AppNav";
 import CardList from "../CardList.tsx/CardList";
 import { Route, Routes } from "react-router-dom";
 import Product from "../Product/Product";
+import AddProduct from "../AddProduct/AddProduct";
+import About from "../About/About";
 // import styles from "./App.module.scss";
 
 const App = () => {
@@ -14,7 +16,9 @@ const App = () => {
         <AppNav />
         <Routes>
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/" element={<CardList />} />
+          <Route path="/Home" element={<CardList />} />
+          <Route path="/AddCard" element={<AddProduct />} />
+          <Route path="/About" element={<About />} />
         </Routes>
       </Provider>
     </div>

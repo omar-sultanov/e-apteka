@@ -1,4 +1,4 @@
-export enum Store{
+export enum StoreName{
     AppSrore="AppStore",
     CardSrore="CardStore"
 }

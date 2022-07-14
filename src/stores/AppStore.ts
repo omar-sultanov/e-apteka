@@ -1,42 +1,17 @@
-import { observable, action, reaction, makeAutoObservable } from "mobx";
-import { Item } from "../models/Item";
-import { Product } from "../models/Product";
-import { v4 as uuidv4 } from 'uuid';
+// import { observable, action, reaction, makeAutoObservable } from "mobx";
+// import { Item } from "../models/Item";
 
-class AppStore {
-  constructor() {
-    makeAutoObservable(this);
-    reaction(
-      () => this.products,
-      (_) => console.log(this.products.length)
-    );
-  }
+// class ItemStore {
+//   constructor() {
+//     makeAutoObservable(this);
+//     reaction(
+//       () => this.items,
+//       (_) => console.log(this.items.length)
+//     );
+//   }
 
-  @observable
+//   @observable
 //   items: Item[] = [new Item("Javascript"), new Item("Typescript")];
-     products:Product[]=[
-        {   id:uuidv4(),
-            name:"Серетид",
-            description:"аэрозоль для ингаляций 25 мкг+250 мкг/доза 120 доз 1 шт",
-            image:"https://cdn.eapteka.ru/upload/offer_photo/207/303/resized/450_450_1_37ea6c8cbbb820fe30b9006eea9b846a.png?t=1634633203&_cvc=1657102352"
-        },
-        {   id:uuidv4(),
-            name:"Элидел",
-            description:"крем для наружного применения 1 % 15 г 1 шт",
-            image:"https://cdn.eapteka.ru/upload/offer_photo/206/577/resized/450_450_1_46cf144ead9ee17a38e566c953536bd1.png?t=1644314591&_cvc=1657102352"
-        },
-        {   id:uuidv4(),
-            name:"Лоратадин-Тева",
-            description:"Вспомогательные вещества: лактозы моногидрат 62,5 мг.",
-            image:"https://cdn.eapteka.ru/upload/offer_photo/250/569/1_5906851753a423cca1855053e6a155a4.png?t=1644481998&_cvc=1657102352"
-        },
-        {   id:uuidv4(),
-            name:"Цетиризин Реневал",
-            description:"капли для приема внутрь 10 мг/мл 10 мл 1 шт",
-            image:"https://cdn.eapteka.ru/upload/offer_photo/494/981/1_b93b04ffbce1eb2f03b03c158b300106.png?t=1644825730&_cvc=1657102352"
-        }
-     ];
-
 //   @observable activeItem: any;
 
 //   @action
@@ -63,6 +38,6 @@ class AppStore {
 //     this.items = newEditItem;
 //     this.activeItem = null;
 //   };
-}
-const store = new AppStore();
-export default store;
+// }
+// const store = new ItemStore();
+// export default store;

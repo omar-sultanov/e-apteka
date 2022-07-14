@@ -1,11 +1,12 @@
 @import '/src/styles/fonts/fonts.scss';
 .Card{
     margin: 10px;
+    background-color: rgb(207, 207, 248) !important;
 
 }
 .CardGraphy{
-    font-family: "Poppins" !important;
-    font-weight: bold;
+    font-family: "Poppins Regular" !important;
+    font-weight: normal;
     color: rgb(83, 76, 76);
     font-style: normal;
 }

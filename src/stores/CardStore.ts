@@ -1,6 +1,6 @@
 import { observable, action, reaction, makeAutoObservable } from "mobx";
 import { Product } from "../models/Product";
-// import { v4 as uuidv4 } from 'uuid';
+import Data from '../data/data.json'
 
 class CardStore {
   constructor() {
@@ -13,28 +13,7 @@ class CardStore {
 
   @observable
   //   items: Item[] = [new Item("Javascript"), new Item("Typescript")];
-  products: Product[] = [
-    {
-      id: "1",
-      name: "Серетид",
-      description: "аэрозоль для ингаляций 25 мкг+250 мкг/доза 120 доз 1 шт",
-    },
-    {
-      id: "2",
-      name: "Элидел",
-      description: "крем для наружного применения 1 % 15 г 1 шт",
-    },
-    {
-      id: "3",
-      name: "Лоратадин-Тева",
-      description: "Вспомогательные вещества: лактозы моногидрат 62,5 мг.",
-    },
-    {
-      id: "4",
-      name: "Цетиризин Реневал",
-      description: "капли для приема внутрь 10 мг/мл 10 мл 1 шт",
-    },
-  ];
+  products: Product[] = Data.products
 
   //   @observable activeItem: any;
 
@@ -43,10 +22,10 @@ class CardStore {
   //     this.items = [...this.items, new Item(name)];
   //   };
 
-  //   @action
-  //   removeItem = (id: string) => {
-  //     this.items = this.items.filter((item) => item.id !== id);
-  //   };
+    @action
+    onClickDeleteHandller = (id: number) => {
+      this.products = this.products.filter((card) => card.id !== id);
+    };
 
   //   @action
   //   updateItem = (id: string) => {
