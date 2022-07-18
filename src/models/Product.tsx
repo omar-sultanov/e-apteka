@@ -1,7 +1,20 @@
-class substance {
-  name: string;
-  id: number;
-  code: string;
+interface substance {
+  name: string,
+  id: number,
+  code: string,
+}
+
+interface product{
+    name: string,
+    id: number,
+    createdAt: string,
+    updatedAt: string,
+    substanceId: number,
+    substance:{
+      name: string,
+      id: number,
+      code: string,
+    }
 }
 
 export class Product {
@@ -11,23 +24,20 @@ export class Product {
   updatedAt: string;
   substanceId: number;
   substance: substance;
-  constructor(
-    name: string,
-    id: number,
-    createdAt: string,
-    updatedAt: string,
-    substanceId: number,
-    substanceName: string,
-    subId: number,
-    substanceCode: string
+  constructor(item:product
   ) {
-    this.id = id;
-    this.name = name;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-    this.substanceId = substanceId;
-    this.substance.code = substanceCode;
-    this.substance.id = subId;
-    this.substance.name = substanceName;
+    this.id = item.id;
+    this.name = item.name;
+    this.createdAt = item.createdAt;
+    this.updatedAt = item.updatedAt;
+    this.substanceId = item.substanceId;
+    this.substance.code = item.substance.code;
+    this.substance.id = item.substance.id;
+    this.substance.name = item.substance.name;
   }
+}
+
+export interface IProductData {
+  name: string;
+  description: string;
 }
