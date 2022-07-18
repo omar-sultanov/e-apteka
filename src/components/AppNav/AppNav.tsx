@@ -213,6 +213,7 @@ const ResponsiveAppBar = () => {
                       <Link
                         style={{ textDecoration: "none", color: "black" }}
                         to={`/${page}`}
+                        
                       >
                         {page}
                       </Link>
