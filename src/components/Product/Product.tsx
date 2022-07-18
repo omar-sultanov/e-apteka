@@ -9,7 +9,7 @@ import { StoreName } from "../../dictionary";
 
 const ProductCard = inject(StoreName.CardSrore)(
   observer((props: any) => {
-    const { products, onClickDeleteHandller } = props.CardStore;
+    const { products, removeProduct} = props.CardStore;
 
     const params = useParams();
     const product = products.find(
@@ -38,7 +38,7 @@ const ProductCard = inject(StoreName.CardSrore)(
             <Button
               component={Link}
               to="/Home"
-              onClick={() => onClickDeleteHandller(id)}
+              onClick={() => removeProduct(id)}
               variant="contained"
               size="large"
               color="error"

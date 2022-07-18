@@ -1,6 +1,8 @@
 import { observable, action, reaction, makeAutoObservable } from "mobx";
-import { Product } from "../models/Product";
-import Data from '../data/data.json'
+import CyrillicToTranslit from "cyrillic-to-translit-js";
+const cyrillicToTranslit = CyrillicToTranslit();
+import { IProductData, Product } from "../models/Product";
+import Data from "../data/data.json";
 
 class CardStore {
   constructor() {
@@ -11,21 +13,31 @@ class CardStore {
     );
   }
 
-  @observable
-  //   items: Item[] = [new Item("Javascript"), new Item("Typescript")];
-  products: Product[] = Data.products
+  @observable products: Product[] = Data.products;
 
-  //   @observable activeItem: any;
-
-  //   @action
-  //   addItems = (name: string) => {
-  //     this.items = [...this.items, new Item(name)];
-  //   };
-
-    @action
-    onClickDeleteHandller = (id: number) => {
-      this.products = this.products.filter((card) => card.id !== id);
+  @observable lastELementProducts = this.products[this.products.length - 1];
+  @action
+  addProduct = (form: IProductData) => {
+    const addModel = {
+      id: ++this.lastELementProducts.id,
+      name: form.description,
+      createdAt: new Date().toJSON(),
+      updatedAt: new Date().toJSON(),
+      substanceId: ++this.lastELementProducts.substanceId,
+      substance: {
+        id: ++this.lastELementProducts.substance.id,
+        name: form.name,
+        code: cyrillicToTranslit.transform(form.name),
+      },
     };
+
+    this.products.push(addModel);   
+  };
+
+  @action
+  removeProduct = (id: number) => {
+    this.products = this.products.filter((card) => card.id !== id);
+  };
 
   //   @action
   //   updateItem = (id: string) => {
