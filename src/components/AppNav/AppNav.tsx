@@ -18,16 +18,8 @@ import { styled } from "@mui/material/styles";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
-import styles from "./AppNav.module.scss";
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const pages = ["Home", "About", "AddCard"];
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -3,
@@ -36,26 +28,6 @@ const ResponsiveAppBar = () => {
       padding: "0 4px",
     },
   }));
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = (e: any) => {
-    setAnchorElNav(null);
-    // const buttonId = e.currentTarget.textContent;
-
-    // if (buttonId === "Products") {
-    //   console.log("button1");
-    // }
-
-    // if (buttonId === "Blog") {
-    //   console.log("button2");
-    // }
-
-    // if (buttonId === "AddCard") {
-    //   console.log("button3");
-    // }
-  };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -164,64 +136,11 @@ const ResponsiveAppBar = () => {
               noWrap
               component="a"
               href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".1rem",
-                fontSize: 30,
-                color: "inherit",
-                textDecoration: "none",
-              }}
+              sx={{display: { xs: "none", md: "flex" }}}
             >
               eHEALTH
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography className={styles.pageFonts} textAlign="center">
-                      <Link
-                        style={{ textDecoration: "none", color: "black" }}
-                        to={`/${page}`}
-                        
-                      >
-                        {page}
-                      </Link>
-                    </Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
             <VaccinesTwoToneIcon
               sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
             />
@@ -230,41 +149,11 @@ const ResponsiveAppBar = () => {
               noWrap
               component="a"
               href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".1rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
+              sx={{ display: { xs: "flex", md: "none" }}}
             >
               eHEALTH
             </Typography>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex", justifyContent: "center" },
-              }}
-            >
-              {pages.map((page) => (
-                <Button
-                  className={styles.pageFonts}
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block", fontSize: 18 }}
-                >
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to={`/${page}`}
-                  >
-                    {page}
-                  </Link>
-                </Button>
-              ))}
-            </Box>
+            
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <IconButton aria-label="cart">
