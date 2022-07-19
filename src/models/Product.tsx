@@ -10,14 +10,10 @@ interface product{
     createdAt: string,
     updatedAt: string,
     substanceId: number,
-    substance:{
-      name: string,
-      id: number,
-      code: string,
-    }
+    substance:substance
 }
 
-export class Product {
+export class Product implements product{
   id: number;
   name: string;
   createdAt: string;
