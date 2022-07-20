@@ -18,8 +18,12 @@ import { styled } from "@mui/material/styles";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import NetworkService from "../../services/NetworkService";
+
 
 const ResponsiveAppBar = () => {
+// console.log( NetworkService())
+  
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -3,
@@ -28,6 +32,7 @@ const ResponsiveAppBar = () => {
       padding: "0 4px",
     },
   }));
+ 
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =

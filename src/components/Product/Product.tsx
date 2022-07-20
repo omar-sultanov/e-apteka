@@ -6,11 +6,14 @@ import { Link, useParams } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import { Product } from "../../models/Product";
 import { StoreName } from "../../dictionary";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 const ProductCard = inject(StoreName.CardSrore)(
   observer((props: any) => {
-    const { products, removeProduct} = props.CardStore;
+    const { products, removeProduct, items} = props.CardStore;
 
+    console.log(items);
+    
     const params = useParams();
     const product = products.find(
       (item: Product) => item.id.toString() === params.id
@@ -42,19 +45,11 @@ const ProductCard = inject(StoreName.CardSrore)(
               variant="contained"
               size="large"
               color="error"
-              startIcon={<Delete />}
+              startIcon={<ShoppingBasketIcon />}
             >
-              Delete
+              Add Cart
             </Button>
-            <Button
-              sx={{ mx: 2 }}
-              variant="contained"
-              size="large"
-              color="secondary"
-              endIcon={<Edit />}
-            >
-              Edit
-            </Button>
+
           </div>
         </div>
       </div>

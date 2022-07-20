@@ -1,8 +1,5 @@
 import { observable, action, reaction, makeAutoObservable } from "mobx";
-import CyrillicToTranslit from "cyrillic-to-translit-js";
-const cyrillicToTranslit = CyrillicToTranslit();
-import { IProductData, Product } from "../models/Product";
-import Data from "../data/data.json";
+import { Product } from "../models/Product";
 
 class CardStore {
   constructor() {
@@ -13,31 +10,36 @@ class CardStore {
     );
   }
 
-  @observable products: Product[] = Data.products;
+  @observable products: Product[] = [];
 
-  @observable lastELementProducts = this.products[this.products.length - 1];
-  @action
-  addProduct = (form: IProductData) => {
-    const addModel = {
-      id: ++this.lastELementProducts.id,
-      name: form.description,
-      createdAt: new Date().toJSON(),
-      updatedAt: new Date().toJSON(),
-      substanceId: ++this.lastELementProducts.substanceId,
-      substance: {
-        id: ++this.lastELementProducts.substance.id,
-        name: form.name,
-        code: cyrillicToTranslit.transform(form.name),
-      },
-    };
+  @action 
+  getProducts=(items:Product[])=>{
+    this.products=items   
+  }
 
-    this.products.push(addModel);   
-  };
+  // @observable lastELementProducts = this.products[this.products.length - 1];
+  // @action
+  // addProduct = (form: IProductData) => {
+  //   const addModel = {
+  //     id: ++this.lastELementProducts.id,
+  //     name: form.description,
+  //     createdAt: new Date().toJSON(),
+  //     updatedAt: new Date().toJSON(),
+  //     substanceId: ++this.lastELementProducts.substanceId,
+  //     substance: {
+  //       id: ++this.lastELementProducts.substance.id,
+  //       name: form.name,
+  //       code: cyrillicToTranslit.transform(form.name),
+  //     },
+  //   };
 
-  @action
-  removeProduct = (id: number) => {
-    this.products = this.products.filter((card) => card.id !== id);
-  };
+  //   this.products.push(addModel);   
+  // };
+
+  // @action
+  // removeProduct = (id: number) => {
+  //   this.products = this.products.filter((card) => card.id !== id);
+  // };
 
   //   @action
   //   updateItem = (id: string) => {

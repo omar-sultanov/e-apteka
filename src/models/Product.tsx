@@ -4,7 +4,7 @@ interface substance {
   code: string,
 }
 
-interface product{
+export interface product{
     name: string,
     id: number,
     createdAt: string,
