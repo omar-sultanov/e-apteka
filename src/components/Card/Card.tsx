@@ -12,9 +12,10 @@ import { Link } from "react-router-dom";
 
 interface ProductProp {
   product: Product;
+  addCartProducts: any;
 }
 const ImgMediaCard = (props: ProductProp) => {
-  const { id, name } = props.product;
+  const { product, addCartProducts } = props;
   const subName = props.product.substance.name;
 
   return (
@@ -29,7 +30,7 @@ const ImgMediaCard = (props: ProductProp) => {
           {subName}
         </Typography>
         <Typography className={styles.CardGraphy} variant="body2">
-          {name}
+          {product.name}
         </Typography>
       </CardContent>
       <Divider light />
@@ -39,12 +40,13 @@ const ImgMediaCard = (props: ProductProp) => {
           size="small"
           color="success"
           aria-label="add to shopping cart"
+          onClick={() => addCartProducts(product)}
         >
           <AddShoppingCartIcon />
         </Button>
         <Button
           component={Link}
-          to={`/product/${id}`}
+          to={`/product/${product.id}`}
           variant="outlined"
           size="small"
           color="error"

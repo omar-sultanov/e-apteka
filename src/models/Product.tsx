@@ -32,8 +32,3 @@ export class Product implements product{
     this.substance.name = item.substance.name;
   }
 }
-
-export interface IProductData {
-  name: string;
-  description: string;
-}
