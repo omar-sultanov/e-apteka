@@ -6,13 +6,13 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { inject, observer } from "mobx-react";
-import { StoreName } from "../../dictionary";
+import { StoresNames } from "../../dictionary";
 import { Button, Typography } from "@mui/material";
 import { Product } from "../../models/Product";
 import { Link } from "react-router-dom";
 import styles from "./ProductsCart.module.scss";
 
-const FolderList = inject(StoreName.CardSrore)(
+const FolderList = inject(StoresNames.CardStore)(
   observer((props: any) => {
     const { removeCartProducts, cartProducts } = props.CardStore;
 
@@ -27,8 +27,8 @@ const FolderList = inject(StoreName.CardSrore)(
 
     return (
       <div className={styles.Cart}>
-        <Typography variant="h5" sx={{ textAlign: "center", my: "10px" }}>
-          Product in Cart
+        <Typography variant="h5" className={styles.graphy} >
+          Добавить в Корзину
         </Typography>
         <List sx={{ bgcolor: "background.paper" }}>
           {cartList.map((product: Product, i: number) => (
@@ -47,7 +47,7 @@ const FolderList = inject(StoreName.CardSrore)(
           ))}
           
         </List>
-        <Button  variant="outlined"  component={Link} to="/">HOME</Button>
+        <Button className={styles.btn} variant="outlined"  component={Link} to="/">ГЛАВНОЕ</Button>
       </div>
     );
   })

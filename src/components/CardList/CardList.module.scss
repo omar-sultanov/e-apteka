@@ -1,7 +1,14 @@
 @import '/src/styles/fonts/fonts.scss';
 .CardList{
+    background-color: rgb(245, 245, 248);
+ .stack{
+    margin: 10px auto;
+}   
+.Cards{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(245, 245, 248);
 }
+}
+
+

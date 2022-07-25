@@ -1,23 +1,34 @@
-import React from 'react'
+export default class NetworkService {
+  token: string;
+  endpoint: string;
 
-const NetworkService= () => {
+  constructor(endpoint: string, token:string) {
+    this.endpoint = `${endpoint}api/`;
+    this.token = token;
+  }
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwiaWQiOjgsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYyNzI5MjAyOX0.smA9a5v47rs-oG2loD1jR5Zd5RlGqmb0XN0KWjniyKo"
-const url= "http://77.223.99.133:8080/api/products/part"
+  fetch  = ({
+    alias, parameters }:{alias: string, parameters: object}) => {
+    const options : {method:string,headers:any, body: any} = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        "token": this.token
+      },
+      body: JSON.stringify(parameters),
 
-const req= {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'token': token
-  },
-  body: JSON.stringify( {offset:0, limit:10})
+    };
+
+    return (
+      fetch(`${this.endpoint}${alias}`,options)
+        .then(response => response.json())
+    );
+  };
 }
-  return (
-    fetch(url,req)
-    .then(response => response.json())
-  )
-}
 
-export default NetworkService
+
+
+
+
+  

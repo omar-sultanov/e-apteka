@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   AppBar,
   Box,
@@ -15,15 +15,15 @@ import VaccinesTwoToneIcon from "@mui/icons-material/VaccinesTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled } from "@mui/material/styles";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { inject, observer } from "mobx-react";
-import { StoreName } from "../../dictionary";
+import { ServicesNames, StoresNames } from "../../dictionary";
 import { Link } from "react-router-dom";
 
-const ResponsiveAppBar = inject(StoreName.CardSrore)(
+const ResponsiveAppBar = inject(StoresNames.CardStore, ServicesNames.ProductService)(
   observer((props: any) => {
     const { cartProducts } = props.CardStore;
+
     const count = cartProducts.length;
 
     const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -74,8 +74,7 @@ const ResponsiveAppBar = inject(StoreName.CardSrore)(
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose} component={Link} to="/auth">Авторизовать</MenuItem>
       </Menu>
     );
 
@@ -97,20 +96,12 @@ const ResponsiveAppBar = inject(StoreName.CardSrore)(
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton aria-label="cart">
-            <StyledBadge badgeContent={count} color="error">
-              <NotificationsIcon />
-            </StyledBadge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
           <IconButton aria-label="cart" component={Link} to="/cart">
             <StyledBadge badgeContent={count} color="error">
               <ShoppingCartIcon />
             </StyledBadge>
           </IconButton>
-          <p>Notifications</p>
+          <p>Корзина</p>
         </MenuItem>
         <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton
@@ -122,7 +113,7 @@ const ResponsiveAppBar = inject(StoreName.CardSrore)(
           >
             <AccountCircle />
           </IconButton>
-          <p>Profile</p>
+          <p>Профиль</p>
         </MenuItem>
       </Menu>
     );
@@ -145,7 +136,7 @@ const ResponsiveAppBar = inject(StoreName.CardSrore)(
                 href="/"
                 sx={{ display: { xs: "none", md: "flex" } }}
               >
-                eHEALTH
+                ЕАПТЕКА
               </Typography>
 
               <VaccinesTwoToneIcon
@@ -158,17 +149,11 @@ const ResponsiveAppBar = inject(StoreName.CardSrore)(
                 href=""
                 sx={{ display: { xs: "flex", md: "none" } }}
               >
-                eHEALTH
+                ЕАПТЕКА
               </Typography>
 
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <IconButton aria-label="cart">
-                  <StyledBadge badgeContent={count} color="info">
-                    <NotificationsIcon />
-                  </StyledBadge>
-                </IconButton>
-
                 <IconButton aria-label="cart" component={Link} to="/cart">
                   <StyledBadge badgeContent={count} color="info">
                     <ShoppingCartIcon />

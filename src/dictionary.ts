@@ -1,4 +1,9 @@
-export enum StoreName{
-    AppSrore="AppStore",
-    CardSrore="CardStore"
+export enum StoresNames{
+    AppStore="AppStore",
+    CardStore="CardStore"
+}
+
+export enum ServicesNames{
+    NetworkService="NetworkService",
+    ProductService="ProductService"
 }

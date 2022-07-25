@@ -1,21 +1,56 @@
-import React from 'react';
-import { inject, observer } from 'mobx-react';
-import Card from '../Card/Card'
-import styles from './CardList.module.scss'
-import { Product } from '../../models/Product';
-import { StoreName } from '../../dictionary'
+import React, { useEffect, useState } from "react";
+import { inject, observer } from "mobx-react";
+import Card from "../Card/Card";
+import styles from "./CardList.module.scss";
+import { Product } from "../../models/Product";
+import { StoresNames, ServicesNames } from "../../dictionary";
+import { Pagination, Stack, Typography } from "@mui/material";
+import { count } from "console";
+import usePagination from './Pagination'
 
-const CardList = inject(StoreName.CardSrore)(observer((props:any) => {
-  const { products, addCartProducts} = props.CardStore;
+const CardList = inject(
+  StoresNames.CardStore,
+  ServicesNames.ProductService
+)(
+  observer((props: any) => {
+    const { products, addCartProducts } = props.CardStore;
 
-  return (
-    <div className={styles.CardList}>
-      {products.map((product:Product)=>(
-        <Card key={product.id} product={product} addCartProducts={addCartProducts}/>
-        ))}
-    </div>
-  )
-}))
+    const [fetchStatus, setFetchStatus] = useState(true);
+    useEffect(() => {
+      props.ProductService.getPills().finally(() => {
+        setFetchStatus(false);
+      });
+    localStorage.setItem("products", JSON.stringify(products));
+    },[fetchStatus]);
+    
+    const [page, setPage] = useState(1);
+    const PER_PAGE = 10;
+  
+    const count = Math.ceil(products.length / PER_PAGE);
+    const _DATA = usePagination(products, PER_PAGE);
+  
+    const handleChange = (e: React.ChangeEvent<unknown>, value:number) => {
+      setPage(value);
+      _DATA.jump(value);
+    };
 
-export default CardList
+    return (
+      <div className={styles.CardList}>
+        <Stack spacing={2}>
+          <Pagination className={styles.stack} count={count} page={page} onChange={handleChange}/>
+        </Stack>
+        <div className={styles.Cards}>
+          {_DATA.currentData().map((product: Product) => (
+            <Card
+              key={product.id}
+              product={product}
+              addCartProducts={addCartProducts}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  })
+);
 
+export default CardList;

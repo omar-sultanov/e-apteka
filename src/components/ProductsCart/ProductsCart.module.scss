@@ -2,4 +2,17 @@
     height: 100vh;
     width: 70%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .graphy{
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .btn{
+        width: 200px;
+        box-shadow: 2px 2px 2px 0px;
+    }
 }

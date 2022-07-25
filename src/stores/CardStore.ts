@@ -12,6 +12,7 @@ class CardStore {
 
   @observable products: Product[] = [];
   @observable cartProducts: Product[] = [];
+  
   @action 
   getCount=(a:number)=>{
     return a
@@ -19,7 +20,7 @@ class CardStore {
 
   @action 
   getProducts=  (items:Product[])=>{
-    this.products=items   
+    this.products= items  
   }
 
   @action 
@@ -33,5 +34,5 @@ class CardStore {
   }
  
 }
-const store = new CardStore();
-export default store;
+// const store = new CardStore();
+export default CardStore;
