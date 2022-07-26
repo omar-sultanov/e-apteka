@@ -1,3 +1,5 @@
+import AppService from "./services/AppService";
+
 export enum StoresNames{
     AppStore="AppStore",
     CardStore="CardStore"
@@ -5,5 +7,6 @@ export enum StoresNames{
 
 export enum ServicesNames{
     NetworkService="NetworkService",
-    ProductService="ProductService"
+    ProductService="ProductService",
+    AppService="AppService"
 }

@@ -19,7 +19,7 @@ const ImgMediaCard = (props: ProductProp) => {
   const subName = props.product.substance.name;
 
   return (
-    <Card className={styles.Card} sx={{ maxWidth: 260, boxShadow: 3 }}>
+    <Card className={styles.Card}>
       <CardContent>
         <Typography
           className={styles.CardGraphy}

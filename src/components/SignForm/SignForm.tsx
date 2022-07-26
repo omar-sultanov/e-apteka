@@ -22,17 +22,10 @@ const AddTextFields = inject(StoresNames.AppStore)(
 
     return (
       <div>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "65ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
+        <Box>
           <div className={styles.auth}>
             <Typography
-              sx={{ mt: "20px", mx: "auto" }}
+              className="mx-auto mt-2"
               variant="h6"
               gutterBottom
               component="div"

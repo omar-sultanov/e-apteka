@@ -8,7 +8,7 @@ export default class NetworkService {
   }
 
   fetch  = ({
-    alias, parameters }:{alias: string, parameters: object}) => {
+    alias, parameters }:{alias: string, parameters?: object}) => {
     const options : {method:string,headers:any, body: any} = {
       method: "POST",
       headers: {

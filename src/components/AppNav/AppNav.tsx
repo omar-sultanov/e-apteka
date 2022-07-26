@@ -23,15 +23,7 @@ import { Link } from "react-router-dom";
 const ResponsiveAppBar = inject(StoresNames.CardStore, ServicesNames.ProductService)(
   observer((props: any) => {
     const { cartProducts } = props.CardStore;
-
     const count = cartProducts.length;
-
-    const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-      "& .MuiBadge-badge": {
-        border: `2px solid ${theme.palette.background.paper}`,
-        padding: "3px",
-      },
-    }));
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -97,9 +89,9 @@ const ResponsiveAppBar = inject(StoresNames.CardStore, ServicesNames.ProductServ
       >
         <MenuItem>
           <IconButton aria-label="cart" component={Link} to="/cart">
-            <StyledBadge badgeContent={count} color="error">
+            <Badge badgeContent={count} >
               <ShoppingCartIcon />
-            </StyledBadge>
+            </Badge>
           </IconButton>
           <p>Корзина</p>
         </MenuItem>
@@ -123,41 +115,34 @@ const ResponsiveAppBar = inject(StoresNames.CardStore, ServicesNames.ProductServ
         <AppBar position="static">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <VaccinesTwoToneIcon
-                sx={{
-                  display: { xs: "none", md: "flex", fontSize: 30 },
-                  mr: 1,
-                }}
+              <VaccinesTwoToneIcon className="d-none d-md-flex me-1"
               />
-              <Typography
+              <Typography className="d-none d-md-flex"
                 variant="h5"
                 noWrap
                 component="a"
                 href="/"
-                sx={{ display: { xs: "none", md: "flex" } }}
               >
                 ЕАПТЕКА
               </Typography>
 
-              <VaccinesTwoToneIcon
-                sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+              <VaccinesTwoToneIcon  className="d-flex d-md-none me-1"
               />
-              <Typography
+              <Typography className="d-flex d-md-none"
                 variant="h5"
                 noWrap
                 component="a"
-                href=""
-                sx={{ display: { xs: "flex", md: "none" } }}
+                href="/"
               >
                 ЕАПТЕКА
               </Typography>
 
-              <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box className="flex-grow-1"/>
+              <Box className="d-none d-md-flex">
                 <IconButton aria-label="cart" component={Link} to="/cart">
-                  <StyledBadge badgeContent={count} color="info">
+                  <Badge badgeContent={count}>
                     <ShoppingCartIcon />
-                  </StyledBadge>
+                  </Badge>
                 </IconButton>
                 <IconButton
                   size="large"
@@ -171,7 +156,7 @@ const ResponsiveAppBar = inject(StoresNames.CardStore, ServicesNames.ProductServ
                   <AccountCircle />
                 </IconButton>
               </Box>
-              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <Box className="d-flex d-md-none">
                 <IconButton
                   size="large"
                   aria-label="show more"
