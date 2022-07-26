@@ -1,5 +1,5 @@
-import NetworkService from "../services/NetworkService";
-import AppStore from "../stores/AppStore";
+import NetworkService from "@services/NetworkService";
+import AppStore from "@stores/AppStore";
 
 
 export default class AppService {
@@ -12,15 +12,28 @@ export default class AppService {
   }
 
   async login() {
-    this.networkService.token;
-    localStorage.setItem('token', this.appStore.token);
+    const url = 'auth';
+    const requestType = 'POST';
 
-    const {data} = await this.networkService.fetch({alias: 'auth'});
+
+    // const {data} = await this.networkService.fetch(url, requestType, body);
+    const data = await this.networkService.getToken(url, requestType);
+
+    if (!data) {
+      console.log("wrong email or password");
+      return;
+    }
+
+    this.appStore.token;
+    this.networkService.token;
+
+
+    // const {data} = await this.networkService.fetch({alias: 'auth'});
     // const {token} = data;
     // this.networkService.setToken(token);
     // localStorage.setItem('token', token);
 
-   console.log(data);
+  //  console.log(data);
    
   }
 

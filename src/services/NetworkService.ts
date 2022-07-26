@@ -25,6 +25,11 @@ export default class NetworkService {
         .then(response => response.json())
     );
   };
+
+  getToken = (url:string, requestType:string)=>{
+    const token = localStorage.getItem('token') as string;
+    return token
+  }
 }
 
 

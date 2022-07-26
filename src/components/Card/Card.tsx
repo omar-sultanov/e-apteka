@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import ReadMoreRoundedIcon from "@mui/icons-material/ReadMoreRounded";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Button, Divider } from "@mui/material";
-import { Product } from "../../models/Product";
+import { Product } from "@models/Product";
 import styles from "./Card.module.scss";
 import { Link } from "react-router-dom";
 

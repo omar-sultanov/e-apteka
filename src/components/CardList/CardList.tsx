@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import Card from "../Card/Card";
 import styles from "./CardList.module.scss";
-import { Product } from "../../models/Product";
-import { StoresNames, ServicesNames } from "../../dictionary";
-import { Pagination, Stack, Typography } from "@mui/material";
-import { count } from "console";
+import { Product } from "@models/Product";
+import { ServicesNames, StoresNames } from "../../dictionary";
+import { Pagination, Stack } from "@mui/material";
 import usePagination from './Pagination'
 
 const CardList = inject(

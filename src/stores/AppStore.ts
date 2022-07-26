@@ -1,5 +1,4 @@
 import { observable, action, reaction, makeAutoObservable } from "mobx";
-import { Product } from "../models/Product";
 
 class AppStore {
   constructor() {

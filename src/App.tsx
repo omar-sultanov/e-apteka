@@ -38,7 +38,7 @@ const App= ()=>{
   };
 
   useEffect(()=>{
-    services.AppService.login()
+  services.AppService.login()
 
   },[])
 console.log(appStore.token)

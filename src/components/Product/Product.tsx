@@ -3,7 +3,7 @@ import { Avatar, Button, Divider, Typography } from "@mui/material";
 import styles from "./Product.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { inject, observer } from "mobx-react";
-import { Product } from "../../models/Product";
+import { Product } from "@models/Product";
 import { ServicesNames, StoresNames } from "../../dictionary";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";

@@ -1,35 +1,46 @@
 {
-    "compilerOptions": {
-      "outDir": "build/dist",
-      "module": "commonjs",
-      "target": "es5",
-      "lib": ["es6", "dom"],
-      "resolveJsonModule": true,
-      "sourceMap": true,
-      "allowJs": true,
-      "moduleResolution": "node",
-      "rootDir": "src",
-      "noImplicitReturns": false,
-      "noImplicitThis": true,
-      "noImplicitAny": true,
-      "strictNullChecks": true,
-      "esModuleInterop": true,
-      "jsx": "react-jsx",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "plugins": [{ "name": "typescript-plugin-css-modules" }]  
-    },
-    "include": ["./src/**/*.tsx", "./src/**/*.ts", "./Globals/*.ts"],
-    "exclude": [
-      "node_modules",
-      "build",
-      "scripts",
-      "acceptance-tests",
-      "webpack",
-      "jest",
-      "src/setupTests.ts"
-    ],
-    "types": [
-      "typePatches"
-    ]
-  }
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "baseUrl": "./src",
+    "paths": {
+      "@models/*": ["models/*"],
+      "@services/*": ["services/*"],
+      "@stores/*": ["stores/*"],
+      // "@components/*": ["components/*"],
+      // "@CardList/*":["components/CardList/*"],
+      // "@Product/*":["components/Product/*"],
+      // "@AppNav/*":["components/AppNav/*"],
+      // "@ProductsCart/*":["components/ProductsCart/*"],
+      // "@UrlError/*":["components/UrlError/*"],
+      // "@SignForm/*":["components/SignForm/*"]
+    }
+  },
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./Globals/*.ts"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ],
+  "types": ["typePatches"]
+}

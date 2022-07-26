@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { inject, observer } from "mobx-react";
 import { StoresNames } from "../../dictionary";
 import { Button, Typography } from "@mui/material";
-import { Product } from "../../models/Product";
+import { Product } from "@models/Product";
 import { Link } from "react-router-dom";
 import styles from "./ProductsCart.module.scss";
 
