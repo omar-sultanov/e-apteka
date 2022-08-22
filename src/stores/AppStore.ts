@@ -1,22 +1,17 @@
-import { observable, action, reaction, makeAutoObservable } from "mobx";
+import {makeAutoObservable} from "mobx";
 
-class AppStore {
+export default class AppStore {
+  token: string;
+
+  loggedIn: boolean;
+
   constructor() {
     makeAutoObservable(this);
-    // reaction(
-    //     () => this.token,
-    //     (_) => console.log(this.token)
-    //   );
+    this.token = localStorage.getItem('token') as string;
+    this.loggedIn = (this.token !== null);
   }
 
-  @observable token:string;
- 
-  @action
-  authToken=(key:string)=>{
-    this.token=key
-    console.log(key);
-    
+  setLoggedIn(bool: boolean) {
+    this.loggedIn = bool;
   }
 }
-// const store = new AppStore();
-export default AppStore;

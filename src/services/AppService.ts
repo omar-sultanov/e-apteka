@@ -1,43 +1,36 @@
-import NetworkService from "@services/NetworkService";
-import AppStore from "@stores/AppStore";
+import AppStore from "../stores/AppStore";
 
+import NetworkService from "./NetworkService";
 
 export default class AppService {
-  private networkService: NetworkService;
-  private appStore: AppStore;
+  appStore: AppStore;
 
-  constructor(networkService: NetworkService, appStore: AppStore) {
-    this.networkService = networkService;
+  networkService: NetworkService;
+
+  constructor(appStore: AppStore, networkService: NetworkService) {
     this.appStore = appStore;
+    this.networkService = networkService;
   }
 
-  async login() {
-    const url = 'auth';
+  async logIn(email: string, password: string) {
+    const url = 'http://82.148.31.242/api/user/login';
     const requestType = 'POST';
+    const body = { email, password };
 
+    const {data} = await this.networkService.fetchToken(url, requestType, body);
 
-    // const {data} = await this.networkService.fetch(url, requestType, body);
-    const data = await this.networkService.getToken(url, requestType);
-
-    if (!data) {
-      console.log("wrong email or password");
+    if (!data.token) {
+      alert("wrong email or password");
       return;
     }
 
-    this.appStore.token;
-    this.networkService.token;
-
-
-    // const {data} = await this.networkService.fetch({alias: 'auth'});
-    // const {token} = data;
-    // this.networkService.setToken(token);
-    // localStorage.setItem('token', token);
-
-  //  console.log(data);
-   
+    localStorage.setItem('token', data.token);
+    this.appStore.setLoggedIn(true);
+    this.networkService.setToken(data.token);
   }
 
- 
-
+  logOut() {
+    localStorage.clear();
+    this.appStore.setLoggedIn(false);
+  }
 }
-console.log('appservice');

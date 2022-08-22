@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {  Provider } from "mobx-react";
 import CardStore from "./stores/CardStore";
 import Routers from "./routes/routes";
@@ -14,16 +14,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App= ()=>{
 
-
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwiaWQiOjgsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYyNzI5MjAyOX0.smA9a5v47rs-oG2loD1jR5Zd5RlGqmb0XN0KWjniyKo";
   const endpoint: string = (process.env.REACT_APP_SOME_ENDPOINT as string);
  
   const cardStore = new CardStore();
   const appStore = new AppStore();
 
-  const networkService = new NetworkService(endpoint,token);
+  const networkService = new NetworkService(endpoint,appStore.token);
   const productService = new ProductService(networkService, cardStore);
-  const appService = new AppService(networkService,appStore)
+  const appService = new AppService(appStore, networkService);
 
   
   const stores = {
@@ -37,11 +35,7 @@ const App= ()=>{
     [ServicesNames.AppService]: appService,
   };
 
-  useEffect(()=>{
-  services.AppService.login()
 
-  },[])
-console.log(appStore.token)
   return (
     <ThemeProvider theme={theme}>
         <Provider {...stores} {...services}>
